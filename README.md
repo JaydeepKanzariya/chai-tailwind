@@ -2,7 +2,7 @@
 
 > A lightweight, zero-dependency, zero-build utility-first CSS engine written in vanilla JavaScript that transforms `chai-*` HTML classes directly into inline styles.
 
-- **Live Demo:** [https://your-username.github.io/chai-tailwind/](https://your-username.github.io/chai-tailwind/)
+- **Live Demo:** [https://JaydeepKanzariya.github.io/chai-tailwind/](https://JaydeepKanzariya.github.io/chai-tailwind/)
 - **Interactive Playground:** [playground.html](./playground.html)
 - **Acceptance Test Suite:** [tests.html](./tests.html)
 
