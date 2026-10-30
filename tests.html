@@ -1,0 +1,317 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>ChaiTailwind — Acceptance Test Suite</title>
+  <style>body { margin: 0; }</style>
+</head>
+<body class="chai-bg-chai-50 chai-text-dark chai-font-sans chai-p-32">
+
+  <div class="chai-max-w-900 chai-mx-auto">
+    <div class="chai-flex chai-items-center chai-justify-between chai-mb-24 chai-pb-16 chai-border-b-2 chai-border-chai-300">
+      <div>
+        <h1 class="chai-text-3xl chai-bold chai-text-chai-900 chai-m-0">ChaiTailwind Test Suite ☕</h1>
+        <p class="chai-text-sm chai-text-chai-700 chai-mt-4 chai-mb-0">Automated verification for Section 10 Acceptance Checklist &amp; Bonus features</p>
+      </div>
+      <div id="summary-badge" class="chai-px-16 chai-py-8 chai-rounded-8 chai-bold chai-text-base">
+        Running...
+      </div>
+    </div>
+
+    <div id="results" class="chai-flex chai-flex-col chai-gap-8"></div>
+  </div>
+
+  <!-- Hidden sandbox container for DOM application tests -->
+  <div id="test-sandbox" style="display: none;"></div>
+
+  <script src="src/chai-tailwind.js"></script>
+  <script>
+    (function () {
+      'use strict';
+
+      const resultsContainer = document.getElementById('results');
+      const summaryBadge = document.getElementById('summary-badge');
+      const sandbox = document.getElementById('test-sandbox');
+
+      let passedCount = 0;
+      let failedCount = 0;
+
+      function deepEqual(a, b) {
+        return JSON.stringify(a) === JSON.stringify(b);
+      }
+
+      function addResult(name, passed, detail) {
+        if (passed) {
+          passedCount += 1;
+        } else {
+          failedCount += 1;
+        }
+
+        const row = document.createElement('div');
+        row.className = passed
+          ? 'chai-flex chai-items-center chai-justify-between chai-p-12 chai-bg-white chai-rounded-8 chai-border chai-border-chai-100 chai-shadow-sm'
+          : 'chai-flex chai-items-center chai-justify-between chai-p-12 chai-bg-white chai-rounded-8 chai-border-2 chai-border-red';
+
+        const left = document.createElement('div');
+        const title = document.createElement('div');
+        title.className = 'chai-font-medium chai-text-base chai-text-dark';
+        title.textContent = name;
+        left.appendChild(title);
+
+        if (detail) {
+          const sub = document.createElement('div');
+          sub.className = 'chai-font-mono chai-text-xs chai-text-chai-700 chai-mt-4';
+          sub.textContent = detail;
+          left.appendChild(sub);
+        }
+
+        const badge = document.createElement('span');
+        badge.className = passed
+          ? 'chai-px-10 chai-py-4 chai-rounded-full chai-text-xs chai-bold chai-bg-elaichi chai-text-white'
+          : 'chai-px-10 chai-py-4 chai-rounded-full chai-text-xs chai-bold chai-bg-masala chai-text-white';
+        badge.textContent = passed ? 'PASS' : 'FAIL';
+
+        row.appendChild(left);
+        row.appendChild(badge);
+        resultsContainer.appendChild(row);
+      }
+
+      function test(name, fn) {
+        try {
+          const res = fn();
+          addResult(name, Boolean(res.pass), res.detail || '');
+        } catch (err) {
+          addResult(name, false, 'Exception: ' + (err && err.message ? err.message : String(err)));
+        }
+      }
+
+      // 1. chai-p-2 -> padding: 2px
+      test('1. chai-p-2 → padding: 2px', () => {
+        const parsed = ChaiTailwind.parse('chai-p-2');
+        const el = document.createElement('div');
+        el.className = 'chai-p-2';
+        sandbox.appendChild(el);
+        ChaiTailwind.apply(el);
+        const pass = deepEqual(parsed, { padding: '2px' }) && el.style.padding === '2px';
+        return { pass, detail: `parse() => ${JSON.stringify(parsed)}, style.padding => "${el.style.padding}"` };
+      });
+
+      // 2. chai-bg-red -> background-color: red
+      test('2. chai-bg-red → background-color: red', () => {
+        const parsed = ChaiTailwind.parse('chai-bg-red');
+        const el = document.createElement('div');
+        el.className = 'chai-bg-red';
+        sandbox.appendChild(el);
+        ChaiTailwind.apply(el);
+        const pass = deepEqual(parsed, { backgroundColor: 'red' }) && el.style.backgroundColor === 'red';
+        return { pass, detail: `parse() => ${JSON.stringify(parsed)}, style.backgroundColor => "${el.style.backgroundColor}"` };
+      });
+
+      // 3. chai-text-center -> text-align: center
+      test('3. chai-text-center → text-align: center', () => {
+        const parsed = ChaiTailwind.parse('chai-text-center');
+        const el = document.createElement('div');
+        el.className = 'chai-text-center';
+        sandbox.appendChild(el);
+        ChaiTailwind.apply(el);
+        const pass = deepEqual(parsed, { textAlign: 'center' }) && el.style.textAlign === 'center';
+        return { pass, detail: `parse() => ${JSON.stringify(parsed)}, style.textAlign => "${el.style.textAlign}"` };
+      });
+
+      // 4. chai-text-red -> color: red, chai-text-24 -> font-size: 24px, chai-text-xl -> font-size: 20px
+      test('4. chai-text-red → color: red, chai-text-24 → font-size: 24px, chai-text-xl → font-size: 20px', () => {
+        const pColor = ChaiTailwind.parse('chai-text-red');
+        const pNum = ChaiTailwind.parse('chai-text-24');
+        const pScale = ChaiTailwind.parse('chai-text-xl');
+        const pass =
+          deepEqual(pColor, { color: 'red' }) &&
+          deepEqual(pNum, { fontSize: '24px' }) &&
+          deepEqual(pScale, { fontSize: '20px' });
+        return {
+          pass,
+          detail: `red=${JSON.stringify(pColor)}, 24=${JSON.stringify(pNum)}, xl=${JSON.stringify(pScale)}`,
+        };
+      });
+
+      // 5. chai-mx-auto sets both left and right margin to auto
+      test('5. chai-mx-auto sets both left and right margin to auto', () => {
+        const parsed = ChaiTailwind.parse('chai-mx-auto');
+        const el = document.createElement('div');
+        el.className = 'chai-mx-auto';
+        sandbox.appendChild(el);
+        ChaiTailwind.apply(el);
+        const pass =
+          deepEqual(parsed, { marginLeft: 'auto', marginRight: 'auto' }) &&
+          el.style.marginLeft === 'auto' &&
+          el.style.marginRight === 'auto';
+        return { pass, detail: `parse() => ${JSON.stringify(parsed)}` };
+      });
+
+      // 6. chai-w-1/2 -> width: 50%
+      test('6. chai-w-1/2 → width: 50%', () => {
+        const parsed = ChaiTailwind.parse('chai-w-1/2');
+        const el = document.createElement('div');
+        el.className = 'chai-w-1/2';
+        sandbox.appendChild(el);
+        ChaiTailwind.apply(el);
+        const pass = deepEqual(parsed, { width: '50%' }) && el.style.width === '50%';
+        return { pass, detail: `parse() => ${JSON.stringify(parsed)}, style.width => "${el.style.width}"` };
+      });
+
+      // 7. chai-bg-[#ff6600] and chai-p-[1.5rem] work (plus underscore space conversion)
+      test('7. Arbitrary values: chai-bg-[#ff6600], chai-p-[1.5rem], chai-border-[1px_solid_red]', () => {
+        const pBg = ChaiTailwind.parse('chai-bg-[#ff6600]');
+        const pPad = ChaiTailwind.parse('chai-p-[1.5rem]');
+        const pBorder = ChaiTailwind.parse('chai-border-[1px_solid_red]');
+        const pass =
+          deepEqual(pBg, { backgroundColor: '#ff6600' }) &&
+          deepEqual(pPad, { padding: '1.5rem' }) &&
+          deepEqual(pBorder, { border: '1px solid red' });
+        return {
+          pass,
+          detail: `bg=${JSON.stringify(pBg)}, p=${JSON.stringify(pPad)}, border=${JSON.stringify(pBorder)}`,
+        };
+      });
+
+      // 8. chai-bg-chai-500 uses the palette
+      test('8. chai-bg-chai-500 uses the built-in palette (#c27c2c)', () => {
+        const parsed = ChaiTailwind.parse('chai-bg-chai-500');
+        const pKesar = ChaiTailwind.parse('chai-text-kesar');
+        const pMasala = ChaiTailwind.parse('chai-border-masala');
+        const pass =
+          deepEqual(parsed, { backgroundColor: '#c27c2c' }) &&
+          deepEqual(pKesar, { color: '#f4a300' }) &&
+          deepEqual(pMasala, { borderColor: '#7b2d26' });
+        return {
+          pass,
+          detail: `chai-500=${JSON.stringify(parsed)}, kesar=${JSON.stringify(pKesar)}, masala=${JSON.stringify(pMasala)}`,
+        };
+      });
+
+      // 9. chai-rounded-tl-8 sets only the top-left radius
+      test('9. chai-rounded-tl-8 sets only the top-left radius', () => {
+        const parsed = ChaiTailwind.parse('chai-rounded-tl-8');
+        const el = document.createElement('div');
+        el.className = 'chai-rounded-tl-8';
+        sandbox.appendChild(el);
+        ChaiTailwind.apply(el);
+        const pass =
+          deepEqual(parsed, { borderTopLeftRadius: '8px' }) &&
+          el.style.borderTopLeftRadius === '8px' &&
+          el.style.borderTopRightRadius === '' &&
+          el.style.borderBottomLeftRadius === '' &&
+          el.style.borderBottomRightRadius === '';
+        return { pass, detail: `parse() => ${JSON.stringify(parsed)}` };
+      });
+
+      // 10. chai-p-4 chai-p-8 -> padding: 8px (last wins)
+      test('10. chai-p-4 chai-p-8 → padding: 8px (class order: last wins)', () => {
+        const el = document.createElement('div');
+        el.className = 'chai-p-4 chai-p-8';
+        sandbox.appendChild(el);
+        ChaiTailwind.apply(el);
+        const pass = el.style.padding === '8px';
+        return { pass, detail: `style.padding => "${el.style.padding}"` };
+      });
+
+      // 11. Non-chai classes (e.g. card) are preserved
+      test('11. Non-chai classes (e.g. "card") are preserved', () => {
+        const el = document.createElement('div');
+        el.className = 'card chai-p-10 custom-box';
+        sandbox.appendChild(el);
+        ChaiTailwind.apply(el);
+        const pass =
+          el.classList.contains('card') &&
+          el.classList.contains('custom-box') &&
+          !el.classList.contains('chai-p-10') &&
+          el.style.padding === '10px';
+        return { pass, detail: `remaining className => "${el.className}"` };
+      });
+
+      // 12. chai-* classes are removed after processing (and empty class attribute removed)
+      test('12. chai-* classes and empty class attribute are removed after processing', () => {
+        const el = document.createElement('div');
+        el.className = 'chai-p-16 chai-bg-tomato';
+        sandbox.appendChild(el);
+        ChaiTailwind.apply(el);
+        const pass = !el.hasAttribute('class') && el.style.padding === '16px' && el.style.backgroundColor === 'tomato';
+        return { pass, detail: `hasAttribute('class') => ${el.hasAttribute('class')}` };
+      });
+
+      // 13. chai-bg-notacolor, chai-xyz-5, and rejected CSS values don't throw, remain on element, and don't erase prior styles
+      test('13. Unknown/invalid classes (chai-bg-notacolor, chai-xyz-5, chai-p-[bogus]) do not throw, remain on element, and preserve prior styles', () => {
+        const el = document.createElement('div');
+        el.className = 'chai-bg-notacolor chai-xyz-5 chai-w-[calc(100%-28px)] chai-px-4 chai-p-[bogus]';
+        sandbox.appendChild(el);
+        ChaiTailwind.apply(el);
+        const pass =
+          ChaiTailwind.parse('chai-bg-notacolor') === null &&
+          ChaiTailwind.parse('chai-xyz-5') === null &&
+          el.classList.contains('chai-bg-notacolor') &&
+          el.classList.contains('chai-xyz-5') &&
+          el.classList.contains('chai-w-[calc(100%-28px)]') &&
+          el.classList.contains('chai-p-[bogus]') &&
+          !el.classList.contains('chai-px-4') &&
+          el.style.width === '' &&
+          el.style.paddingLeft === '4px' &&
+          el.style.paddingRight === '4px';
+        return {
+          pass,
+          detail: `remaining className => "${el.className}", paddingLeft => "${el.style.paddingLeft}", paddingRight => "${el.style.paddingRight}"`,
+        };
+      });
+
+      // 14. ChaiTailwind.parse('chai-p-12') returns { padding: '12px' } without touching the DOM
+      test('14. ChaiTailwind.parse("chai-p-12") returns { padding: "12px" } purely', () => {
+        const parsed = ChaiTailwind.parse('chai-p-12');
+        const pass = deepEqual(parsed, { padding: '12px' });
+        return { pass, detail: `parse('chai-p-12') => ${JSON.stringify(parsed)}` };
+      });
+
+      // 15. Bonus: Negative values (chai--m-8 -> margin: -8px) & single-side borders
+      test('15. (Bonus) Negative values (chai--m-8 → margin: -8px) & single-side borders (chai-border-b-2)', () => {
+        const pMargin = ChaiTailwind.parse('chai--m-8');
+        const pTop = ChaiTailwind.parse('chai--top-12');
+        const pBorderB = ChaiTailwind.parse('chai-border-b-2');
+        const pass =
+          deepEqual(pMargin, { margin: '-8px' }) &&
+          deepEqual(pTop, { top: '-12px' }) &&
+          deepEqual(pBorderB, { borderBottomWidth: '2px', borderBottomStyle: 'solid' });
+        return {
+          pass,
+          detail: `chai--m-8 => ${JSON.stringify(pMargin)}, chai-border-b-2 => ${JSON.stringify(pBorderB)}`,
+        };
+      });
+
+      // 16. Bonus: MutationObserver via ChaiTailwind.observe()
+      ChaiTailwind.observe(sandbox);
+      const dyn = document.createElement('div');
+      dyn.className = 'chai-p-24 chai-text-masala';
+      sandbox.appendChild(dyn);
+
+      setTimeout(() => {
+        const pass = dyn.style.padding === '24px' && !dyn.hasAttribute('class');
+        addResult(
+          '16. (Bonus) ChaiTailwind.observe() automatically styles & strips class on dynamically added elements',
+          pass,
+          `style.padding => "${dyn.style.padding}", hasAttribute("class") => ${dyn.hasAttribute('class')}`
+        );
+
+        // Apply ChaiTailwind to the newly rendered test result cards
+        ChaiTailwind.apply(resultsContainer);
+
+        if (failedCount === 0) {
+          summaryBadge.className = 'chai-px-16 chai-py-8 chai-rounded-8 chai-bold chai-text-base chai-bg-elaichi chai-text-white';
+          summaryBadge.textContent = `ALL ${passedCount} TESTS PASSED`;
+        } else {
+          summaryBadge.className = 'chai-px-16 chai-py-8 chai-rounded-8 chai-bold chai-text-base chai-bg-masala chai-text-white';
+          summaryBadge.textContent = `${failedCount} FAILED / ${passedCount} PASSED`;
+        }
+        ChaiTailwind.apply(summaryBadge);
+      }, 50);
+    })();
+  </script>
+</body>
+</html>
+

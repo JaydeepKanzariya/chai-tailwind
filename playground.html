@@ -1,0 +1,181 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>ChaiTailwind ☕ — Live Playground</title>
+  <link rel="preconnect" href="https://fonts.googleapis.com">
+  <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+  <link href="https://fonts.googleapis.com/css2?family=Inter:wght@400;500;600;700;900&family=JetBrains+Mono:wght@400;600&display=swap" rel="stylesheet">
+  <style>body { margin: 0; }</style>
+</head>
+<body class="chai-bg-chai-50 chai-text-dark chai-font-[Inter,_system-ui,_sans-serif] chai-min-h-screen chai-flex chai-flex-col">
+
+  <!-- Header -->
+  <header class="chai-bg-chai-900 chai-text-chai-50 chai-px-24 chai-py-16 chai-shadow-md">
+    <div class="chai-max-w-1120 chai-mx-auto chai-flex chai-items-center chai-justify-between chai-flex-wrap chai-gap-16">
+      <div class="chai-flex chai-items-center chai-gap-12">
+        <span class="chai-text-2xl">☕</span>
+        <span class="chai-text-xl chai-bold">ChaiTailwind Playground</span>
+      </div>
+      <nav class="chai-flex chai-items-center chai-gap-16 chai-text-sm">
+        <a href="index.html" class="chai-text-chai-100 chai-underline">← Back to Docs &amp; Demo</a>
+        <a href="tests.html" class="chai-border chai-border-chai-300 chai-text-chai-100 chai-px-12 chai-py-6 chai-rounded-6 chai-no-underline">Test Suite</a>
+      </nav>
+    </div>
+  </header>
+
+  <!-- Main Content -->
+  <main class="chai-max-w-1120 chai-w-full chai-mx-auto chai-p-24 chai-flex-1">
+    <div class="chai-mb-24">
+      <h1 class="chai-text-3xl chai-bold chai-text-chai-900 chai-mt-0 chai-mb-8">Interactive Utility Playground</h1>
+      <p class="chai-text-base chai-text-chai-700 chai-m-0">
+        Type <code class="chai-font-mono chai-bg-chai-100 chai-px-6 chai-py-2 chai-rounded-4">chai-*</code> classes below to inspect <code class="chai-font-mono chai-bg-chai-100 chai-px-6 chai-py-2 chai-rounded-4">ChaiTailwind.parse()</code> output and preview the rendered element in real time.
+      </p>
+    </div>
+
+    <!-- Preset Buttons -->
+    <div class="chai-flex chai-items-center chai-gap-8 chai-flex-wrap chai-mb-16">
+      <span class="chai-text-xs chai-bold chai-uppercase chai-tracking-1 chai-text-chai-700 chai-mr-4">Presets:</span>
+      <button type="button" data-preset="chai-p-24 chai-bg-kesar chai-text-chai-900 chai-rounded-12 chai-shadow-lg chai-bold chai-text-xl chai-text-center" class="preset-btn chai-bg-white chai-border chai-border-chai-300 chai-text-chai-900 chai-px-12 chai-py-6 chai-rounded-full chai-text-xs chai-font-medium chai-cursor-pointer">
+        Kesar Card
+      </button>
+      <button type="button" data-preset="chai-px-20 chai-py-12 chai-bg-masala chai-text-white chai-rounded-full chai-shadow-md chai-uppercase chai-tracking-2 chai-text-sm chai-bold chai-text-center" class="preset-btn chai-bg-white chai-border chai-border-chai-300 chai-text-chai-900 chai-px-12 chai-py-6 chai-rounded-full chai-text-xs chai-font-medium chai-cursor-pointer">
+        Masala Pill Badge
+      </button>
+      <button type="button" data-preset="chai-p-20 chai-bg-elaichi chai-text-white chai-rounded-tl-20 chai-rounded-br-20 chai-border-2 chai-border-chai-900 chai-text-lg chai-italic chai-text-center" class="preset-btn chai-bg-white chai-border chai-border-chai-300 chai-text-chai-900 chai-px-12 chai-py-6 chai-rounded-full chai-text-xs chai-font-medium chai-cursor-pointer">
+        Elaichi Leaf Box
+      </button>
+      <button type="button" data-preset="chai-p-[2rem] chai-bg-[#1e1b4b] chai-text-[#fef08a] chai-border-[2px_dashed_#f4a300] chai-rounded-16 chai-shadow-xl chai-font-mono chai-text-center" class="preset-btn chai-bg-white chai-border chai-border-chai-300 chai-text-chai-900 chai-px-12 chai-py-6 chai-rounded-full chai-text-xs chai-font-medium chai-cursor-pointer">
+        Arbitrary Values [...]
+      </button>
+    </div>
+
+    <!-- Input Box -->
+    <div class="chai-bg-white chai-p-20 chai-rounded-12 chai-border chai-border-chai-300 chai-shadow-sm chai-mb-24">
+      <label for="class-input" class="chai-block chai-text-xs chai-bold chai-uppercase chai-tracking-1 chai-text-chai-700 chai-mb-8">
+        Utility Classes Input
+      </label>
+      <input
+        id="class-input"
+        type="text"
+        value="chai-p-24 chai-bg-kesar chai-text-chai-900 chai-rounded-12 chai-shadow-lg chai-bold chai-text-xl chai-text-center"
+        placeholder="e.g. chai-p-20 chai-bg-kesar chai-rounded-12"
+        class="chai-w-[calc(100%_-_28px)] chai-p-12 chai-font-mono chai-text-sm chai-bg-chai-50 chai-text-chai-900 chai-border-2 chai-border-chai-300 chai-rounded-8"
+      >
+      <div id="unknown-warning" class="chai-mt-8 chai-text-xs chai-font-mono chai-text-masala chai-hidden"></div>
+    </div>
+
+    <!-- Split Preview and Generated CSS -->
+    <div class="chai-grid chai-grid-cols-[repeat(auto-fit,minmax(220px,1fr))] chai-gap-24">
+      <!-- Live Preview Box -->
+      <div class="chai-bg-white chai-p-24 chai-rounded-12 chai-border chai-border-chai-300 chai-shadow-md chai-flex chai-flex-col">
+        <div class="chai-text-xs chai-bold chai-uppercase chai-tracking-1 chai-text-chai-700 chai-mb-16">
+          Live Preview Box
+        </div>
+        <div class="chai-flex-1 chai-bg-chai-100 chai-p-32 chai-rounded-8 chai-flex chai-items-center chai-justify-center chai-min-h-180">
+          <div id="preview-box">
+            Hello from ChaiTailwind ☕
+          </div>
+        </div>
+      </div>
+
+      <!-- Generated Inline CSS Panel -->
+      <div class="chai-bg-chai-900 chai-text-chai-50 chai-p-24 chai-rounded-12 chai-shadow-md chai-flex chai-flex-col chai-gap-16">
+        <div>
+          <div class="chai-text-xs chai-bold chai-uppercase chai-tracking-1 chai-text-kesar chai-mb-8">
+            Generated Inline CSS (element.style.cssText)
+          </div>
+          <pre id="css-output" class="chai-bg-dark chai-text-chai-100 chai-p-16 chai-rounded-8 chai-font-mono chai-text-xs chai-overflow-auto chai-m-0 chai-leading-1.6"></pre>
+        </div>
+
+        <div>
+          <div class="chai-text-xs chai-bold chai-uppercase chai-tracking-1 chai-text-elaichi chai-mb-8">
+            ChaiTailwind.parse() Merged Style Object
+          </div>
+          <pre id="parsed-output" class="chai-bg-dark chai-text-chai-100 chai-p-16 chai-rounded-8 chai-font-mono chai-text-xs chai-overflow-auto chai-m-0 chai-leading-1.6"></pre>
+        </div>
+      </div>
+    </div>
+  </main>
+
+  <script src="src/chai-tailwind.js"></script>
+  <script>
+    (function () {
+      'use strict';
+
+      const input = document.getElementById('class-input');
+      const previewBox = document.getElementById('preview-box');
+      const cssOutput = document.getElementById('css-output');
+      const parsedOutput = document.getElementById('parsed-output');
+      const unknownWarning = document.getElementById('unknown-warning');
+      const presetBtns = document.querySelectorAll('.preset-btn');
+
+      function updatePlayground() {
+        const raw = input.value.trim();
+        const tokens = raw ? raw.split(/\s+/) : [];
+
+        // Reset preview element inline style
+        previewBox.removeAttribute('style');
+
+        const mergedObject = {};
+        const unknownTokens = [];
+
+        for (let i = 0; i < tokens.length; i += 1) {
+          const token = tokens[i];
+          const parsed = ChaiTailwind.parse(token);
+          if (parsed !== null) {
+            const keys = Object.keys(parsed);
+            const before = previewBox.style.cssText;
+            let accepted = true;
+            for (let j = 0; j < keys.length; j += 1) {
+              const k = keys[j];
+              previewBox.style[k] = '';
+              previewBox.style[k] = parsed[k];
+              if (previewBox.style[k] === '') {
+                accepted = false;
+                break;
+              }
+            }
+            if (accepted) {
+              for (let j = 0; j < keys.length; j += 1) {
+                const k = keys[j];
+                mergedObject[k] = parsed[k];
+              }
+            } else {
+              previewBox.style.cssText = before;
+              unknownTokens.push(token);
+            }
+          } else {
+            unknownTokens.push(token);
+          }
+        }
+
+        const cssText = previewBox.getAttribute('style') || '/* No valid styles applied */';
+        cssOutput.textContent = cssText.split('; ').join(';\n');
+        parsedOutput.textContent = JSON.stringify(mergedObject, null, 2);
+
+        if (unknownTokens.length > 0) {
+          unknownWarning.style.display = 'block';
+          unknownWarning.textContent = 'Ignored unknown/invalid classes: ' + unknownTokens.join(', ');
+        } else {
+          unknownWarning.style.display = 'none';
+          unknownWarning.textContent = '';
+        }
+      }
+
+      input.addEventListener('input', updatePlayground);
+
+      for (let i = 0; i < presetBtns.length; i += 1) {
+        presetBtns[i].addEventListener('click', function () {
+          input.value = this.getAttribute('data-preset');
+          updatePlayground();
+        });
+      }
+
+      updatePlayground();
+    })();
+  </script>
+</body>
+</html>
+

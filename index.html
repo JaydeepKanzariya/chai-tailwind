@@ -1,0 +1,332 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>ChaiTailwind ☕ — Zero-Build Utility-First CSS Engine</title>
+  <link rel="preconnect" href="https://fonts.googleapis.com">
+  <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+  <link href="https://fonts.googleapis.com/css2?family=Inter:wght@400;500;600;700;900&family=JetBrains+Mono:wght@400;600&display=swap" rel="stylesheet">
+  <style>body { margin: 0; }</style>
+</head>
+<body class="chai-bg-chai-50 chai-text-dark chai-font-[Inter,_system-ui,_sans-serif] chai-leading-1.5">
+
+  <!-- Top Navigation Bar -->
+  <header class="chai-bg-chai-900 chai-text-chai-50 chai-px-24 chai-py-16 chai-sticky chai-top-0 chai-z-50 chai-shadow-md">
+    <div class="chai-max-w-1120 chai-mx-auto chai-flex chai-items-center chai-justify-between chai-flex-wrap chai-gap-16">
+      <div class="chai-flex chai-items-center chai-gap-12">
+        <span class="chai-text-2xl">☕</span>
+        <span class="chai-text-xl chai-bold chai--tracking-0.5">ChaiTailwind</span>
+        <span class="chai-bg-chai-700 chai-text-chai-100 chai-text-xs chai-font-mono chai-px-8 chai-py-2 chai-rounded-full">v1.0.0</span>
+      </div>
+      <nav class="chai-flex chai-items-center chai-flex-wrap chai-gap-20 chai-text-sm chai-font-medium">
+        <a href="#how-it-works" class="chai-text-chai-100 chai-underline">How It Works</a>
+        <a href="#before-after" class="chai-text-chai-100 chai-underline">Before / After</a>
+        <a href="#docs" class="chai-text-chai-100 chai-underline">Utilities Showcase</a>
+        <a href="playground.html" class="chai-bg-kesar chai-text-chai-900 chai-bold chai-px-12 chai-py-6 chai-rounded-6 chai-no-underline">Live Playground</a>
+        <a href="tests.html" class="chai-border chai-border-chai-300 chai-text-chai-100 chai-px-12 chai-py-6 chai-rounded-6 chai-no-underline">Tests</a>
+      </nav>
+    </div>
+  </header>
+
+  <!-- 1. Hero Section -->
+  <section class="chai-bg-chai-100 chai-px-24 chai-py-64 chai-border-b-1 chai-border-chai-300">
+    <div class="chai-max-w-960 chai-mx-auto chai-text-center">
+      <div class="chai-inline-block chai-bg-chai-300 chai-text-chai-900 chai-text-xs chai-bold chai-uppercase chai-tracking-1 chai-px-12 chai-py-6 chai-rounded-full chai-mb-20">
+        100% Vanilla JS • Single File • Zero Dependencies • Zero Build Step
+      </div>
+      <h1 class="chai-text-5xl chai-font-black chai-text-chai-900 chai-mt-0 chai-mb-16 chai-leading-56">
+        ChaiTailwind ☕
+      </h1>
+      <p class="chai-text-xl chai-text-chai-700 chai-max-w-680 chai-mx-auto chai-mt-0 chai-mb-32 chai-leading-1.6">
+        Brew crisp, utility-first styles directly in your HTML. One lightweight script scans the DOM, parses <code class="chai-bg-chai-50 chai-text-masala chai-font-mono chai-px-6 chai-py-2 chai-rounded-4">chai-*</code> classes into inline styles, and cleans up after itself.
+      </p>
+      <div class="chai-flex chai-items-center chai-justify-center chai-gap-16 chai-flex-wrap">
+        <a href="https://github.com/your-username/chai-tailwind" target="_blank" rel="noopener" class="chai-bg-chai-900 chai-text-chai-50 chai-bold chai-text-base chai-px-24 chai-py-12 chai-rounded-8 chai-shadow-md chai-cursor-pointer chai-transition chai-no-underline">
+          View on GitHub →
+        </a>
+        <a href="#docs" class="chai-bg-kesar chai-text-chai-900 chai-bold chai-text-base chai-px-24 chai-py-12 chai-rounded-8 chai-shadow-sm chai-cursor-pointer chai-transition chai-no-underline">
+          Explore Docs &amp; Utilities
+        </a>
+      </div>
+
+      <!-- Built-in Chai Palette Strip -->
+      <div class="chai-mt-48 chai-p-20 chai-bg-chai-50 chai-rounded-12 chai-border chai-border-chai-300 chai-shadow-sm">
+        <div class="chai-text-xs chai-bold chai-uppercase chai-tracking-1 chai-text-chai-700 chai-mb-12">
+          Built-in Chai &amp; Spice Palette
+        </div>
+        <div class="chai-grid chai-grid-cols-[repeat(auto-fit,minmax(220px,1fr))] chai-gap-8">
+          <div class="chai-bg-chai-100 chai-text-chai-900 chai-p-10 chai-rounded-6 chai-text-xs chai-font-mono chai-bold chai-border chai-border-chai-300">chai-100</div>
+          <div class="chai-bg-chai-300 chai-text-chai-900 chai-p-10 chai-rounded-6 chai-text-xs chai-font-mono chai-bold">chai-300</div>
+          <div class="chai-bg-chai-500 chai-text-white chai-p-10 chai-rounded-6 chai-text-xs chai-font-mono chai-bold">chai-500</div>
+          <div class="chai-bg-chai-700 chai-text-white chai-p-10 chai-rounded-6 chai-text-xs chai-font-mono chai-bold">chai-700</div>
+          <div class="chai-bg-chai-900 chai-text-white chai-p-10 chai-rounded-6 chai-text-xs chai-font-mono chai-bold">chai-900</div>
+          <div class="chai-bg-masala chai-text-white chai-p-10 chai-rounded-6 chai-text-xs chai-font-mono chai-bold">masala</div>
+          <div class="chai-bg-elaichi chai-text-white chai-p-10 chai-rounded-6 chai-text-xs chai-font-mono chai-bold">elaichi</div>
+          <div class="chai-bg-kesar chai-text-chai-900 chai-p-10 chai-rounded-6 chai-text-xs chai-font-mono chai-bold">kesar</div>
+          <div class="chai-bg-dark chai-text-white chai-p-10 chai-rounded-6 chai-text-xs chai-font-mono chai-bold">dark</div>
+          <div class="chai-bg-light chai-text-dark chai-p-10 chai-rounded-6 chai-text-xs chai-font-mono chai-bold chai-border chai-border-chai-300">light</div>
+          <div class="chai-bg-tomato chai-text-white chai-p-10 chai-rounded-6 chai-text-xs chai-font-mono chai-bold">tomato (CSS)</div>
+          <div class="chai-bg-[#6b46c1] chai-text-white chai-p-10 chai-rounded-6 chai-text-xs chai-font-mono chai-bold">[#6b46c1]</div>
+        </div>
+      </div>
+    </div>
+  </section>
+
+  <!-- 2. How It Works Section -->
+  <section id="how-it-works" class="chai-py-64 chai-px-24 chai-max-w-1120 chai-mx-auto">
+    <div class="chai-text-center chai-mb-40">
+      <span class="chai-text-xs chai-bold chai-uppercase chai-tracking-1 chai-text-masala">Under The Hood</span>
+      <h2 class="chai-text-3xl chai-bold chai-text-chai-900 chai-mt-8 chai-mb-8">How ChaiTailwind Works</h2>
+      <p class="chai-text-base chai-text-chai-700 chai-m-0">Four deterministic steps from utility class names to native inline styles.</p>
+    </div>
+
+    <div class="chai-grid chai-grid-cols-[repeat(auto-fit,minmax(220px,1fr))] chai-gap-20">
+      <div class="chai-bg-white chai-p-24 chai-rounded-12 chai-border chai-border-chai-100 chai-shadow-md">
+        <div class="chai-w-36 chai-h-36 chai-bg-chai-100 chai-text-chai-900 chai-rounded-full chai-flex chai-items-center chai-justify-center chai-bold chai-text-base chai-mb-16">1</div>
+        <h3 class="chai-text-lg chai-bold chai-text-chai-900 chai-mt-0 chai-mb-8">Write Classes</h3>
+        <p class="chai-text-sm chai-text-chai-700 chai-m-0 chai-leading-1.5">
+          Author standard HTML with expressive <code class="chai-font-mono chai-bg-chai-50 chai-px-4 chai-rounded-4">chai-*</code> utility classes and drop in one script tag.
+        </p>
+      </div>
+
+      <div class="chai-bg-white chai-p-24 chai-rounded-12 chai-border chai-border-chai-100 chai-shadow-md">
+        <div class="chai-w-36 chai-h-36 chai-bg-chai-300 chai-text-chai-900 chai-rounded-full chai-flex chai-items-center chai-justify-center chai-bold chai-text-base chai-mb-16">2</div>
+        <h3 class="chai-text-lg chai-bold chai-text-chai-900 chai-mt-0 chai-mb-8">Scan DOM</h3>
+        <p class="chai-text-sm chai-text-chai-700 chai-m-0 chai-leading-1.5">
+          On load, <code class="chai-font-mono chai-bg-chai-50 chai-px-4 chai-rounded-4">querySelectorAll</code> finds every <code class="chai-font-mono chai-bg-chai-50 chai-px-4 chai-rounded-4">[class*="chai-"]</code> element in a single pass.
+        </p>
+      </div>
+
+      <div class="chai-bg-white chai-p-24 chai-rounded-12 chai-border chai-border-chai-100 chai-shadow-md">
+        <div class="chai-w-36 chai-h-36 chai-bg-kesar chai-text-chai-900 chai-rounded-full chai-flex chai-items-center chai-justify-center chai-bold chai-text-base chai-mb-16">3</div>
+        <h3 class="chai-text-lg chai-bold chai-text-chai-900 chai-mt-0 chai-mb-8">Parse &amp; Cache</h3>
+        <p class="chai-text-sm chai-text-chai-700 chai-m-0 chai-leading-1.5">
+          Longest-prefix registry lookup resolves spacing, palette colors, fractions, and <code class="chai-font-mono chai-bg-chai-50 chai-px-4 chai-rounded-4">[...]</code> values with <code class="chai-font-mono chai-bg-chai-50 chai-px-4 chai-rounded-4">Map</code> caching.
+        </p>
+      </div>
+
+      <div class="chai-bg-white chai-p-24 chai-rounded-12 chai-border chai-border-chai-100 chai-shadow-md">
+        <div class="chai-w-36 chai-h-36 chai-bg-elaichi chai-text-white chai-rounded-full chai-flex chai-items-center chai-justify-center chai-bold chai-text-base chai-mb-16">4</div>
+        <h3 class="chai-text-lg chai-bold chai-text-chai-900 chai-mt-0 chai-mb-8">Inline Styles</h3>
+        <p class="chai-text-sm chai-text-chai-700 chai-m-0 chai-leading-1.5">
+          Applies <code class="chai-font-mono chai-bg-chai-50 chai-px-4 chai-rounded-4">element.style</code> in class order, removes processed <code class="chai-font-mono chai-bg-chai-50 chai-px-4 chai-rounded-4">chai-*</code> tokens, and preserves custom classes.
+        </p>
+      </div>
+    </div>
+  </section>
+
+  <!-- 3. Before / After Section -->
+  <section id="before-after" class="chai-bg-chai-900 chai-text-chai-50 chai-py-64 chai-px-24">
+    <div class="chai-max-w-1120 chai-mx-auto">
+      <div class="chai-text-center chai-mb-40">
+        <span class="chai-text-xs chai-bold chai-uppercase chai-tracking-1 chai-text-kesar">Transformation</span>
+        <h2 class="chai-text-3xl chai-bold chai-text-white chai-mt-8 chai-mb-8">Before &amp; After in the DOM</h2>
+        <p class="chai-text-base chai-text-chai-300 chai-m-0">See what you write in HTML versus the resulting DOM element and live rendered output.</p>
+      </div>
+
+      <div class="chai-grid chai-grid-cols-[repeat(auto-fit,minmax(220px,1fr))] chai-gap-24 chai-items-stretch">
+        <!-- Code Block Column -->
+        <div class="chai-bg-dark chai-p-24 chai-rounded-12 chai-border chai-border-chai-700 chai-flex chai-flex-col chai-justify-between">
+          <div>
+            <div class="chai-text-xs chai-bold chai-uppercase chai-tracking-1 chai-text-kesar chai-mb-8">1. What You Write (Source HTML)</div>
+            <pre class="chai-bg-[#111111] chai-text-chai-100 chai-p-16 chai-rounded-8 chai-font-mono chai-text-xs chai-overflow-auto chai-m-0 chai-leading-1.6"><code>&lt;div class="card chai-p-24 chai-bg-masala chai-text-white chai-rounded-12 chai-shadow-lg chai-text-center"&gt;
+  &lt;h3 class="chai-text-2xl chai-bold chai-m-0"&gt;Masala Chai ☕&lt;/h3&gt;
+  &lt;p class="chai-text-sm chai-mt-8 chai-mb-16 chai-opacity-90"&gt;
+    Spiced with cardamom, ginger &amp; saffron.
+  &lt;/p&gt;
+  &lt;span class="chai-inline-block chai-bg-kesar chai-text-chai-900 chai-px-12 chai-py-6 chai-rounded-full chai-text-xs chai-bold"&gt;
+    Freshly Brewed
+  &lt;/span&gt;
+&lt;/div&gt;</code></pre>
+          </div>
+
+          <div class="chai-mt-20">
+            <div class="chai-text-xs chai-bold chai-uppercase chai-tracking-1 chai-text-elaichi chai-mb-8">2. After ChaiTailwind Runs (DOM Output)</div>
+            <pre class="chai-bg-[#111111] chai-text-chai-100 chai-p-16 chai-rounded-8 chai-font-mono chai-text-xs chai-overflow-auto chai-m-0 chai-leading-1.6"><code>&lt;div class="card" style="padding: 24px; background-color: rgb(123, 45, 38); color: white; border-radius: 12px; box-shadow: ...; text-align: center;"&gt;
+  &lt;h3 style="font-size: 24px; font-weight: 700; margin: 0px;"&gt;Masala Chai ☕&lt;/h3&gt;
+  ...
+&lt;/div&gt;</code></pre>
+          </div>
+        </div>
+
+        <!-- Live Rendered Output Column -->
+        <div class="chai-bg-chai-700 chai-p-32 chai-rounded-12 chai-flex chai-flex-col chai-items-center chai-justify-center">
+          <div class="chai-text-xs chai-bold chai-uppercase chai-tracking-1 chai-text-chai-100 chai-mb-16">Live Rendered Result</div>
+          <div class="card chai-w-full chai-max-w-380 chai-p-24 chai-bg-masala chai-text-white chai-rounded-12 chai-shadow-lg chai-text-center">
+            <h3 class="chai-text-2xl chai-bold chai-m-0">Masala Chai ☕</h3>
+            <p class="chai-text-sm chai-mt-8 chai-mb-16 chai-opacity-90">
+              Spiced with cardamom, ginger &amp; saffron.
+            </p>
+            <span class="chai-inline-block chai-bg-kesar chai-text-chai-900 chai-px-12 chai-py-6 chai-rounded-full chai-text-xs chai-bold">
+              Freshly Brewed
+            </span>
+          </div>
+        </div>
+      </div>
+    </div>
+  </section>
+
+  <!-- 4. Utilities Showcase Section -->
+  <section id="docs" class="chai-py-64 chai-px-24 chai-max-w-1120 chai-mx-auto">
+    <div class="chai-text-center chai-mb-40">
+      <span class="chai-text-xs chai-bold chai-uppercase chai-tracking-1 chai-text-masala">Complete Reference</span>
+      <h2 class="chai-text-3xl chai-bold chai-text-chai-900 chai-mt-8 chai-mb-8">Utilities Showcase</h2>
+      <p class="chai-text-base chai-text-chai-700 chai-m-0">Every card below is styled live by <code class="chai-font-mono chai-bg-chai-100 chai-px-6 chai-py-2 chai-rounded-4">src/chai-tailwind.js</code>.</p>
+    </div>
+
+    <div class="chai-grid chai-grid-cols-[repeat(auto-fit,minmax(220px,1fr))] chai-gap-24">
+
+      <!-- Card 1: Spacing & Sizing -->
+      <div class="chai-bg-white chai-p-24 chai-rounded-12 chai-border chai-border-chai-300 chai-shadow-md">
+        <div class="chai-flex chai-items-center chai-justify-between chai-mb-16">
+          <h3 class="chai-text-xl chai-bold chai-text-chai-900 chai-m-0">1. Spacing &amp; Sizing</h3>
+          <span class="chai-bg-chai-100 chai-text-chai-900 chai-font-mono chai-text-xs chai-px-8 chai-py-4 chai-rounded-4">p, m, gap, w, h</span>
+        </div>
+        <p class="chai-text-sm chai-text-chai-700 chai-mt-0 chai-mb-16">
+          Plain numbers map to <code class="chai-font-mono">px</code>. Supports <code class="chai-font-mono">auto</code>, <code class="chai-font-mono">full</code>, fractions (<code class="chai-font-mono">1/2</code>), negative margins (<code class="chai-font-mono">chai--m-8</code>), and arbitrary brackets.
+        </p>
+        <div class="chai-bg-chai-50 chai-p-16 chai-rounded-8 chai-flex chai-flex-col chai-gap-10">
+          <div class="chai-w-1/2 chai-bg-chai-500 chai-text-white chai-p-8 chai-rounded-4 chai-text-xs chai-font-mono">chai-w-1/2 chai-p-8</div>
+          <div class="chai-w-3/4 chai-bg-chai-700 chai-text-white chai-px-16 chai-py-8 chai-rounded-4 chai-text-xs chai-font-mono">chai-w-3/4 chai-px-16 chai-py-8</div>
+          <div class="chai-w-4/5 chai-mx-auto chai-bg-masala chai-text-white chai-p-8 chai-rounded-4 chai-text-xs chai-font-mono chai-text-center">chai-w-4/5 chai-mx-auto</div>
+        </div>
+      </div>
+
+      <!-- Card 2: Colors -->
+      <div class="chai-bg-white chai-p-24 chai-rounded-12 chai-border chai-border-chai-300 chai-shadow-md">
+        <div class="chai-flex chai-items-center chai-justify-between chai-mb-16">
+          <h3 class="chai-text-xl chai-bold chai-text-chai-900 chai-m-0">2. Colors</h3>
+          <span class="chai-bg-chai-100 chai-text-chai-900 chai-font-mono chai-text-xs chai-px-8 chai-py-4 chai-rounded-4">bg, text, border</span>
+        </div>
+        <p class="chai-text-sm chai-text-chai-700 chai-mt-0 chai-mb-16">
+          Use built-in Chai palette tokens, any CSS named color (validated via <code class="chai-font-mono">CSS.supports</code>), or arbitrary hex/rgb values.
+        </p>
+        <div class="chai-grid chai-grid-cols-3 chai-gap-8">
+          <div class="chai-bg-chai-500 chai-text-white chai-p-12 chai-rounded-6 chai-text-xs chai-font-mono chai-text-center">bg-chai-500</div>
+          <div class="chai-bg-masala chai-text-kesar chai-p-12 chai-rounded-6 chai-text-xs chai-font-mono chai-bold chai-text-center">text-kesar</div>
+          <div class="chai-bg-elaichi chai-text-white chai-p-12 chai-rounded-6 chai-text-xs chai-font-mono chai-text-center">bg-elaichi</div>
+          <div class="chai-bg-teal chai-text-white chai-p-12 chai-rounded-6 chai-text-xs chai-font-mono chai-text-center">bg-teal</div>
+          <div class="chai-bg-[#ff6600] chai-text-white chai-p-12 chai-rounded-6 chai-text-xs chai-font-mono chai-text-center">bg-[#ff6600]</div>
+          <div class="chai-bg-chai-50 chai-text-masala chai-border-2 chai-border-masala chai-p-10 chai-rounded-6 chai-text-xs chai-font-mono chai-text-center">border-masala</div>
+        </div>
+      </div>
+
+      <!-- Card 3: Typography -->
+      <div class="chai-bg-white chai-p-24 chai-rounded-12 chai-border chai-border-chai-300 chai-shadow-md">
+        <div class="chai-flex chai-items-center chai-justify-between chai-mb-16">
+          <h3 class="chai-text-xl chai-bold chai-text-chai-900 chai-m-0">3. Typography</h3>
+          <span class="chai-bg-chai-100 chai-text-chai-900 chai-font-mono chai-text-xs chai-px-8 chai-py-4 chai-rounded-4">text, font, leading</span>
+        </div>
+        <p class="chai-text-sm chai-text-chai-700 chai-mt-0 chai-mb-16">
+          Smart <code class="chai-font-mono">chai-text-*</code> disambiguates font size scales (<code class="chai-font-mono">xs..5xl</code>), pixel sizes, alignment, and text colors.
+        </p>
+        <div class="chai-bg-chai-50 chai-p-16 chai-rounded-8 chai-flex chai-flex-col chai-gap-6">
+          <div class="chai-text-2xl chai-bold chai-text-chai-900">chai-text-2xl chai-bold (24px)</div>
+          <div class="chai-text-lg chai-italic chai-text-masala">chai-text-lg chai-italic chai-text-masala (18px)</div>
+          <div class="chai-text-sm chai-uppercase chai-tracking-2 chai-font-semibold chai-text-chai-700">chai-uppercase chai-tracking-2</div>
+          <div class="chai-text-xs chai-font-mono chai-underline chai-text-right">chai-font-mono chai-underline chai-text-right</div>
+        </div>
+      </div>
+
+      <!-- Card 4: Borders & Radius -->
+      <div class="chai-bg-white chai-p-24 chai-rounded-12 chai-border chai-border-chai-300 chai-shadow-md">
+        <div class="chai-flex chai-items-center chai-justify-between chai-mb-16">
+          <h3 class="chai-text-xl chai-bold chai-text-chai-900 chai-m-0">4. Borders &amp; Radius</h3>
+          <span class="chai-bg-chai-100 chai-text-chai-900 chai-font-mono chai-text-xs chai-px-8 chai-py-4 chai-rounded-4">border, rounded</span>
+        </div>
+        <p class="chai-text-sm chai-text-chai-700 chai-mt-0 chai-mb-16">
+          Border widths, styles (<code class="chai-font-mono">solid/dashed/dotted</code>), colors, and individual corner radii (<code class="chai-font-mono">rounded-tl-16</code>).
+        </p>
+        <div class="chai-grid chai-grid-cols-2 chai-gap-12">
+          <div class="chai-p-12 chai-bg-chai-50 chai-border-2 chai-border-chai-500 chai-rounded-8 chai-text-xs chai-font-mono chai-text-center">
+            border-2 rounded-8
+          </div>
+          <div class="chai-p-12 chai-bg-chai-50 chai-border-2 chai-border-dashed chai-border-masala chai-rounded-full chai-text-xs chai-font-mono chai-text-center">
+            border-dashed rounded-full
+          </div>
+          <div class="chai-p-12 chai-bg-chai-100 chai-rounded-tl-16 chai-rounded-br-16 chai-text-xs chai-font-mono chai-text-center">
+            rounded-tl-16 rounded-br-16
+          </div>
+          <div class="chai-p-12 chai-bg-chai-50 chai-border-[2px_dotted_#8fae6b] chai-rounded-8 chai-text-xs chai-font-mono chai-text-center">
+            border-[2px_dotted_#8fae6b]
+          </div>
+        </div>
+      </div>
+
+      <!-- Card 5: Layout (Flex & Grid) -->
+      <div class="chai-bg-white chai-p-24 chai-rounded-12 chai-border chai-border-chai-300 chai-shadow-md">
+        <div class="chai-flex chai-items-center chai-justify-between chai-mb-16">
+          <h3 class="chai-text-xl chai-bold chai-text-chai-900 chai-m-0">5. Layout (Flex &amp; Grid)</h3>
+          <span class="chai-bg-chai-100 chai-text-chai-900 chai-font-mono chai-text-xs chai-px-8 chai-py-4 chai-rounded-4">flex, grid-cols, pos</span>
+        </div>
+        <p class="chai-text-sm chai-text-chai-700 chai-mt-0 chai-mb-16">
+          Complete flexbox &amp; CSS Grid controls: <code class="chai-font-mono">items-*</code>, <code class="chai-font-mono">justify-*</code>, <code class="chai-font-mono">flex-1</code>, <code class="chai-font-mono">grid-cols-{n}</code>, and positioning.
+        </p>
+        <div class="chai-bg-chai-50 chai-p-12 chai-rounded-8 chai-flex chai-items-center chai-justify-between chai-gap-8 chai-mb-10">
+          <div class="chai-bg-chai-500 chai-text-white chai-px-12 chai-py-8 chai-rounded-6 chai-text-xs chai-font-mono">Start</div>
+          <div class="chai-flex-1 chai-bg-chai-300 chai-text-chai-900 chai-px-12 chai-py-8 chai-rounded-6 chai-text-xs chai-font-mono chai-text-center">chai-flex-1</div>
+          <div class="chai-bg-chai-900 chai-text-white chai-px-12 chai-py-8 chai-rounded-6 chai-text-xs chai-font-mono">End</div>
+        </div>
+        <div class="chai-grid chai-grid-cols-3 chai-gap-8">
+          <div class="chai-bg-elaichi chai-text-white chai-p-8 chai-rounded-4 chai-text-xs chai-font-mono chai-text-center">Col 1</div>
+          <div class="chai-bg-elaichi chai-text-white chai-p-8 chai-rounded-4 chai-text-xs chai-font-mono chai-text-center">Col 2</div>
+          <div class="chai-bg-elaichi chai-text-white chai-p-8 chai-rounded-4 chai-text-xs chai-font-mono chai-text-center">Col 3</div>
+        </div>
+      </div>
+
+      <!-- Card 6: Effects -->
+      <div class="chai-bg-white chai-p-24 chai-rounded-12 chai-border chai-border-chai-300 chai-shadow-md">
+        <div class="chai-flex chai-items-center chai-justify-between chai-mb-16">
+          <h3 class="chai-text-xl chai-bold chai-text-chai-900 chai-m-0">6. Effects</h3>
+          <span class="chai-bg-chai-100 chai-text-chai-900 chai-font-mono chai-text-xs chai-px-8 chai-py-4 chai-rounded-4">shadow, opacity, cursor</span>
+        </div>
+        <p class="chai-text-sm chai-text-chai-700 chai-mt-0 chai-mb-16">
+          Elevation shadows (<code class="chai-font-mono">sm/md/lg/xl</code>), percentage opacity (<code class="chai-font-mono">0..100</code>), pointer cursor, and smooth transitions.
+        </p>
+        <div class="chai-grid chai-grid-cols-3 chai-gap-12 chai-p-8">
+          <div class="chai-bg-white chai-p-12 chai-rounded-8 chai-shadow-sm chai-border chai-border-chai-100 chai-text-xs chai-font-mono chai-text-center">shadow-sm</div>
+          <div class="chai-bg-white chai-p-12 chai-rounded-8 chai-shadow-lg chai-border chai-border-chai-100 chai-text-xs chai-font-mono chai-text-center">shadow-lg</div>
+          <div class="chai-bg-white chai-p-12 chai-rounded-8 chai-shadow-xl chai-border chai-border-chai-100 chai-text-xs chai-font-mono chai-text-center">shadow-xl</div>
+          <div class="chai-bg-masala chai-text-white chai-p-10 chai-rounded-6 chai-opacity-100 chai-text-xs chai-font-mono chai-text-center">opacity-100</div>
+          <div class="chai-bg-masala chai-text-white chai-p-10 chai-rounded-6 chai-opacity-60 chai-text-xs chai-font-mono chai-text-center">opacity-60</div>
+          <div class="chai-bg-masala chai-text-white chai-p-10 chai-rounded-6 chai-opacity-30 chai-text-xs chai-font-mono chai-text-center">opacity-30</div>
+        </div>
+      </div>
+
+    </div>
+  </section>
+
+  <!-- 5. Inspect Tip Banner -->
+  <section class="chai-px-24 chai-pb-64 chai-max-w-1120 chai-mx-auto">
+    <div class="chai-bg-kesar chai-text-chai-900 chai-p-32 chai-rounded-16 chai-shadow-lg chai-flex chai-items-center chai-justify-between chai-flex-wrap chai-gap-20">
+      <div class="chai-max-w-720">
+        <div class="chai-text-xs chai-bold chai-uppercase chai-tracking-1 chai-mb-6">🔍 Developer Tools Inspection Tip</div>
+        <h3 class="chai-text-2xl chai-bold chai-mt-0 chai-mb-8">Right-click any element and select &ldquo;Inspect&rdquo;!</h3>
+        <p class="chai-text-base chai-m-0 chai-leading-1.5">
+          Notice how every <code class="chai-bg-chai-100 chai-px-6 chai-py-2 chai-rounded-4 chai-font-mono chai-text-sm">chai-*</code> class has been cleanly stripped from the DOM and replaced with native <code class="chai-bg-chai-100 chai-px-6 chai-py-2 chai-rounded-4 chai-font-mono chai-text-sm">style="..."</code> declarations. Want to keep classes for debugging? Run <code class="chai-bg-chai-100 chai-px-6 chai-py-2 chai-rounded-4 chai-font-mono chai-text-sm">ChaiTailwind.config({ keepClasses: true })</code>.
+        </p>
+      </div>
+      <a href="playground.html" class="chai-bg-chai-900 chai-text-white chai-bold chai-px-20 chai-py-12 chai-rounded-8 chai-shadow-md chai-no-underline">
+        Try Interactive Playground →
+      </a>
+    </div>
+  </section>
+
+  <!-- 6. Footer -->
+  <footer class="chai-bg-chai-900 chai-text-chai-300 chai-py-32 chai-px-24 chai-border-t-1 chai-border-chai-700">
+    <div class="chai-max-w-1120 chai-mx-auto chai-flex chai-items-center chai-justify-between chai-flex-wrap chai-gap-16 chai-text-sm">
+      <div>
+        <strong class="chai-text-white">ChaiTailwind ☕</strong> — Built for Web Dev Cohort 2026 by <span class="chai-text-kesar chai-font-medium">Jaydeep</span>
+      </div>
+      <div class="chai-flex chai-items-center chai-gap-20">
+        <a href="https://github.com/your-username/chai-tailwind" target="_blank" rel="noopener" class="chai-text-chai-100 chai-underline">GitHub Repository</a>
+        <a href="playground.html" class="chai-text-chai-100 chai-underline">Playground</a>
+        <a href="tests.html" class="chai-text-chai-100 chai-underline">Acceptance Tests</a>
+      </div>
+    </div>
+  </footer>
+
+  <script src="src/chai-tailwind.js"></script>
+</body>
+</html>
