@@ -247,7 +247,7 @@ Sections:
 3. **Before / After**: show a code block of the HTML with `chai-*` classes, next to the rendered result.
 4. **Utilities showcase**: one card per category (Spacing, Colors, Typography, Borders, Layout, Effects), each with live examples.
 5. **Inspect tip**: tell the viewer to open DevTools and see that the classes are gone and inline styles are applied.
-6. **Footer**: GitHub link, "Built for Web Dev Cohort 2026", author name placeholder.
+6. **Footer**: GitHub link, author name placeholder.
 
 Code blocks shown on the page must display the class names **as text** (inside `<pre><code>` with escaped `&lt;` `&gt;`), so the engine doesn't process them.
 
